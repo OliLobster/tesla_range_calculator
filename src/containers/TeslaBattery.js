@@ -3,11 +3,15 @@ import './TeslaBattery.css';
 import TeslaNotice from '../components/TeslaNotice/TeslaNotice';
 import TeslaCar from '../components/TeslaCar/TeslaCar';
 import TeslaStats from '../components/TeslaStats/TeslaStats';
-import {getModelData} from '../services/BatteryService';
+import { getModelData } from '../services/BatteryService';
 
 class TeslaBattery extends React.Component {
     constructor(props) {
         super(props);
+
+        this.calculateStats = this.calculateStats.bind(this);
+        this.statsUpdate = this.statsUpdate.bind(this);
+
         this.state = {
             carstats: [],
             config: {
@@ -17,8 +21,6 @@ class TeslaBattery extends React.Component {
                 wheels: 19
             }
         }
-        this.calculateStats = this.calculateStats.bind(this);
-        this.statsUpdate = this.statsUpdate.bind(this);
     }
 
     calculateStats = (models, value) => {
@@ -26,7 +28,7 @@ class TeslaBattery extends React.Component {
         return models.map(model => {
             // ES6 Object destructuring Syntax,
             // takes out required values and create references to them
-            const {speed, temperature, climate, wheels} = value;
+            const { speed, temperature, climate, wheels } = value;
             const miles = dataModels[model][wheels][climate ? 'on' : 'off'].speed[speed][temperature];
             return {
                 model,
@@ -50,13 +52,13 @@ class TeslaBattery extends React.Component {
     render() {
         // ES6 Object destructuring Syntax,
         // takes out required values and create references to them
-        const {config, carstats} = this.state;
+        const { config, carstats } = this.state;
         return (
             <form className="tesla-battery">
                 <h1>Range Per Charge</h1>
                 <TeslaCar wheelsize={config.wheels}/>
                 <TeslaStats carstats={carstats}/>
-                <TeslaNotice/>
+                <TeslaNotice />
             </form>
         )
     }
