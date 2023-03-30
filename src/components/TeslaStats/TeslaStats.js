@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './TeslaStats.css';
-
+import PropTypes from "prop-types";
 const TeslaStats = (props) => {
     const listItems = props.carstats.map((stat) => (
         <li key={stat.model}>
-            <div className={'tesla-stats-icon tesla-stats-icon--${stat.model.toLowerCase()}'}></div>
+            <div className={`tesla-stats-icon tesla-stats-icon--${stat.model.toLowerCase()}`}></div>
             <p>{stat.miles}</p>
         </li>
     ));
@@ -22,4 +21,4 @@ TeslaStats.propTypes = {
     carstats: PropTypes.array
 }
 
-export default TeslaStats;
+export default TeslaStats
