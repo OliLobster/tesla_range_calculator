@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import './TeslaBattery.css';
 import TeslaNotice from '../components/TeslaNotice/TeslaNotice';
@@ -141,3 +142,4 @@ class TeslaBattery extends React.Component {
     }
 }
 export default TeslaBattery;
+*/
